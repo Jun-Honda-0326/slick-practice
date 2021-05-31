@@ -5,7 +5,7 @@ version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 lazy val slickCodeGen = taskKey[Unit]("excute Slick Codegen")
-slickCodeGen          := (runMain in Compile).toTask(" tasks.SlickCodeGen").value
+slickCodeGen          := (runMain in Compile).toTask(" tasks.CustomSlickCodeGen").value
 
 scalaVersion := "2.13.6"
 
