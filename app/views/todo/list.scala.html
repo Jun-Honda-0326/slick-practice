@@ -1,0 +1,11 @@
+@import slick.models.Todo
+
+
+@(todos: Seq[Todo])
+
+<h1>一覧表示</h1>
+  @for(todo <- todos) {
+    <p>@todo.id</p>
+    <p>@todo.todo</p>
+    <p>@todo.createdAt</p>
+  }

@@ -18,7 +18,18 @@ extends HasDatabaseConfigProvider[JdbcProfile] {
 
   /*  DBIO Methods */
 
+  // Todoを全件取得する
   def all(): Future[Seq[Todo]] = db.run(query.result)
+
+  // idが偶数のものだけを抽出
+  def allOdd(): Future[Seq[Todo]] = db.run(
+    query.filter(x => x.id % 2L === 0L).result
+  )
+
+  // idを取得してTodoを取得
+  def findById(id: Long): Future[Option[Todo]] = db.run(
+    query.filter(x => x.id === id).result.headOption
+  )
 
   // Tableとのカラムマッピング
   private class TodoTable(_tableTag: Tag)
